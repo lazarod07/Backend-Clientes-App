@@ -16,7 +16,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "clientes")
 public class Cliente implements Serializable {
@@ -25,20 +24,18 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 
-	
-	@Size(min = 4)
+	@Size(min = 4, message = "debe tener por lo menos 4 caracteres")
 	@Column(nullable = false)
 	@NotEmpty
 	private String nombre;
 
-	
 	@Column(nullable = false)
 	@NotEmpty
 	private String apellido;
 
-	
 	@Column(nullable = false, unique = true)
 	@Email
+	@NotEmpty
 	private String email;
 
 	@Column(name = "create_at")
